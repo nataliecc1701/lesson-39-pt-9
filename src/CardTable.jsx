@@ -33,7 +33,10 @@ const CardTable = () => {
     const drawCard = async function() {
         try {
             const res = await callApi(`deck/${deckId}/draw`);
-            setCards([...cards, ...res.cards]);
+            if (res.cards.length > 0) {
+                setCards([...cards, ...res.cards]);
+            }
+            else alert("Error: No cards remaining")
         }
         catch (err) {
             alert("service error, see console");
