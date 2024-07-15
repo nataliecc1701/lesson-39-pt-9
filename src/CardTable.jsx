@@ -44,8 +44,22 @@ const CardTable = () => {
         }
     }
     
+    const shuffleDeck = async function() {
+        try {
+            const res = await callApi(`deck/${deckId}/shuffle`)
+            setCards([])
+        }
+        catch (err) {
+            alert("service error, see console");
+            console.log(err);
+        }
+    }
+    
     return (<>
-        <button onClick={drawCard} className={"CardTable-DrawButton"}>Draw a Card</button>
+        <div className="CardTable-ButtonsDiv">
+            <button onClick={drawCard} className={"CardTable-Button CardTable-DrawButton"}>Draw a Card</button>
+            <button onClick={shuffleDeck} className={"CardTable-Button CardTable-ShuffleButton"}>Reshuffle Deck</button>
+        </div>
         {cards.map(c => <Card imgSrc={c.image} key={c.code} />)}
     </>)
 }
