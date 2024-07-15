@@ -12,7 +12,6 @@ const CardTable = () => {
     const callApi = async function(target) {
         try {
             const res = await axios.get(`${apiBaseString}/${target}`);
-            console.log(res);
             return res.data;
         }
         catch (err) {
@@ -24,8 +23,6 @@ const CardTable = () => {
     useEffect(() => {
         async function makeDeck() {
             const res = await callApi('deck/new/shuffle/');
-            console.log("making deck")
-            console.log(res)
             if (res.success) {
                 setDeckId(res.deck_id);
             }
