@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from './Card';
+import './cardTable.css'
 
 const apiBaseString = "https://deckofcardsapi.com/api/"
 
@@ -44,7 +45,7 @@ const CardTable = () => {
     }
     
     return (<>
-        <button onClick={drawCard}>Draw a Card</button>
+        <button onClick={drawCard} className={"CardTable-DrawButton"}>Draw a Card</button>
         {cards.map(c => <Card imgSrc={c.image} key={c.code} />)}
     </>)
 }
